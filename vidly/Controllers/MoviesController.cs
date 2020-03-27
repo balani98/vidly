@@ -13,18 +13,13 @@ namespace vidly.Controllers
         // GET: Movies/Random
         public ActionResult Random()
         {
-            var movie = new Movie()
-            { name = "sanju" };
+            var movies = GetMovies();
            
-            var viewModel = new RandomMovieView_Model()
-            {
-                Movie = movie,
-             
-
-            };
+           
+         
             //ViewData["Movie"] = movie;
             //ViewBag.Movie = movie;
-            return View(viewModel);
+            return View(movies);
            // return Content("deepanshu balani is Gr8");
             //return HttpNotFound();
             //return new EmptyResult();
@@ -57,8 +52,14 @@ namespace vidly.Controllers
         {
             return Content(year + "/" + month);
         }
-   
-
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie { id = 1, name = "Delhi-6" },
+                new Movie { id = 2, name = "Sanju" }
+            };
+        }
 
 
     }
