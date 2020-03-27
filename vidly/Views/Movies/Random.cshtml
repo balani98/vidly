@@ -2,21 +2,5 @@
 @{
     ViewBag.Title = "Random";
 }
-@{ 
-    var className = Model.Customers.Count > 5? "popular" : null;
 
-}
-
-<h3 class="@className">@Model.Movie.name</h3>
-@*rendering of list of customers*@
-@if(Model.Customers.Count==0){
-<p>No Custmer has bought this movie</p>
-}
-else{
-<ul>
-    @foreach(var customer in Model.Customers)
-    {
-        <li>@customer.name</li>
-    }
-</ul>
-}
+<h3>@Model.Movie.name</h3>

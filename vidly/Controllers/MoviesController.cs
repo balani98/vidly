@@ -15,20 +15,11 @@ namespace vidly.Controllers
         {
             var movie = new Movie()
             { name = "sanju" };
-            var customers = new List<Customer>
-            {
-                new Customer{name="deepanshu"},
-                new Customer{name="sahil"},
-                new Customer{name="deny"},
-                new Customer{name="philips"},
-                new Customer{name="balani"},
-                new Customer{name="sharma"}
-            
-             };
+           
             var viewModel = new RandomMovieView_Model()
             {
                 Movie = movie,
-                Customers = customers
+             
 
             };
             //ViewData["Movie"] = movie;
