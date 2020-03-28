@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using vidly.Models;
-
+using System.Data.Entity;
 namespace vidly.Controllers
 {
     public class CustomerController : Controller
@@ -23,7 +23,7 @@ namespace vidly.Controllers
         // GET: Customer/display
         public ActionResult display()
         {
-            var customers = _context.Customers.ToList();
+            var customers = _context.Customers.Include(c=>c.membershipType).ToList();
             return View(customers);
         }
         public ActionResult Details(int id)
