@@ -9,6 +9,7 @@ namespace vidly.Models
     {
         public int Id { get; set; }
         public string name { get; set; }
+        public bool isSubsribedToNewsletter { get; set; }
 
     }
 }
