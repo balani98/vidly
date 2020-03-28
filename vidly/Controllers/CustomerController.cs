@@ -9,30 +9,31 @@ namespace vidly.Controllers
 {
     public class CustomerController : Controller
     {
+        private MovieDbContext _context;
+        public CustomerController()
+        {
+            _context = new MovieDbContext();
+        }
+        //_context is disposable object
+        //method to dispose dbContext
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         // GET: Customer/display
         public ActionResult display()
         {
-            var customers = GetCustomers();
+            var customers = _context.Customers.ToList();
             return View(customers);
         }
         public ActionResult Details(int id)
         {
-            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
                 return HttpNotFound();
 
             return View(customer);
         }
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>
-            {
-                new Customer { Id = 1, name = "John Smith" },
-                new Customer { Id = 2, name = "Mary Williams" }
-            };
-        }
-
-
     }
 }
