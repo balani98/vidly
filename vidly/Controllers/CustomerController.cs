@@ -55,10 +55,22 @@ namespace vidly.Controllers
             return View("formView",viewModel);
         }
         [HttpPost]
-        public ActionResult create(Customer customer)
+        public ActionResult save(Customer customer)
         {
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
+            Console.WriteLine(customer.Id);
+            if (customer.Id!=0) {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                customerInDb.name = customer.name;
+                customerInDb.dateOfBirth = customer.dateOfBirth;
+                customerInDb.membershipTypeId = customer.membershipTypeId;
+                customerInDb.isSubsribedToNewsletter = customer.isSubsribedToNewsletter;
+            }
+            else
+            {
+               
+                _context.Customers.Add(customer);
+            }
+                _context.SaveChanges();
             return RedirectToAction("display", "Customer");
         }    
 
