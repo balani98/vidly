@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using vidly.Models;
 using System.Data.Entity;
+using vidly.ViewModels;
+
 namespace vidly.Controllers
 {
     public class CustomerController : Controller
@@ -39,8 +41,15 @@ namespace vidly.Controllers
         }
         public ActionResult formView()
         {
-            return View();
+            var membershipTypes = _context.membershipTypes.ToList();
+            var viewModels = new NewCustomerViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+            return View(viewModels);
+          
 
         }
+       
    }
 }
