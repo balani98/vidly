@@ -30,6 +30,17 @@ namespace vidly.Controllers
             var customers = _context.Customers.Include(c=>c.membershipType).ToList();
             return View(customers);
         }
+        public ActionResult formView()
+        {
+            var membershipTypes = _context.membershipTypes.ToList();
+            var viewModels = new NewCustomerViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+            return View(viewModels);
+
+
+        }
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
@@ -39,17 +50,15 @@ namespace vidly.Controllers
 
             return View(customer);
         }
-        public ActionResult formView()
+        [HttpPost]
+        public ActionResult create(Customer customer)
         {
-            var membershipTypes = _context.membershipTypes.ToList();
-            var viewModels = new NewCustomerViewModel
-            {
-                MembershipTypes = membershipTypes
-            };
-            return View(viewModels);
-          
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+            return RedirectToAction("display", "Customer");
+        }    
 
-        }
+        
        
    }
 }
