@@ -14,19 +14,20 @@
     </div>
     <div class="form-group">
         <label for="dateOfBirth">Date of Birth</label>
-        @Html.TextBoxFor(m => m.Customer.dateOfBirth, new { @class = "form-control", type = "Date" })
+        @Html.TextBoxFor(m => m.Customer.dateOfBirth, "{0:d-mm-yyyy}", new { @class = "form-control" })
     </div>
-    <div class="checkbox">
-        <label>
-            @Html.CheckBoxFor(m => m.Customer.isSubsribedToNewsletter) Subscribed To NewsLetter?
-        </label>
-    </div>
+
     <div class="form-group">
         <label for="membershipTypeId">MembershipType</label>
         @*Initialization of drop down list*@
         @Html.DropDownListFor(m => m.Customer.membershipTypeId,
          new SelectList(@Model.MembershipTypes,"id","membershipTypeName"),
          "Select Membership Type", new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Customer.isSubsribedToNewsletter) Subscribed To NewsLetter?
+        </label>
     </div>
     <button type="Submit" class="btn btn-primary">Save</button>
 }
