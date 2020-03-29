@@ -39,7 +39,7 @@ namespace vidly.Controllers
         }
         public ActionResult Details(int id)
         {
-            var movie = _context.Movies.SingleOrDefault(c => c.id == id);
+            var movie = _context.Movies.Include(c=>c.genre).SingleOrDefault(c => c.id == id);
 
             if (movie == null)
                 return HttpNotFound();
