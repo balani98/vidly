@@ -4,5 +4,11 @@
 }
 <h2>Id:@Model.Id</h2>
 <h2>name:@Model.name</h2>
+@{ 
+    if (Model.dateOfBirth != null)
+    {
+        <h2>@Model.dateOfBirth.ToString()</h2>
+    }
 
+}
 

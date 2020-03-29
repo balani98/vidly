@@ -239,6 +239,18 @@
     <Compile Include="Migrations\202003281616548_wantToYpdateValue.designer.cs">
       <DependentUpon>202003281616548_wantToYpdateValue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\.cs" />
+    <Compile Include="Migrations\.designer.cs">
+      <DependentUpon>.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003290608049_dobColumnDeleted.cs" />
+    <Compile Include="Migrations\202003290608049_dobColumnDeleted.designer.cs">
+      <DependentUpon>202003290608049_dobColumnDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003290610033_DateOfBirthAdded.cs" />
+    <Compile Include="Migrations\202003290610033_DateOfBirthAdded.designer.cs">
+      <DependentUpon>202003290610033_DateOfBirthAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModel.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -334,6 +346,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003281616548_wantToYpdateValue.resx">
       <DependentUpon>202003281616548_wantToYpdateValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\.resx">
+      <DependentUpon>.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003290608049_dobColumnDeleted.resx">
+      <DependentUpon>202003290608049_dobColumnDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003290610033_DateOfBirthAdded.resx">
+      <DependentUpon>202003290610033_DateOfBirthAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
