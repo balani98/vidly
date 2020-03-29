@@ -251,7 +251,12 @@
     <Compile Include="Migrations\202003290610033_DateOfBirthAdded.designer.cs">
       <DependentUpon>202003290610033_DateOfBirthAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003290708259_adddedNewColumnsInMovie.cs" />
+    <Compile Include="Migrations\202003290708259_adddedNewColumnsInMovie.designer.cs">
+      <DependentUpon>202003290708259_adddedNewColumnsInMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModel.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\MovieDbContext.cs" />
@@ -355,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003290610033_DateOfBirthAdded.resx">
       <DependentUpon>202003290610033_DateOfBirthAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003290708259_adddedNewColumnsInMovie.resx">
+      <DependentUpon>202003290708259_adddedNewColumnsInMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
