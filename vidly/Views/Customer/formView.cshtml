@@ -1,0 +1,49 @@
+﻿@model vidly.Models.Customer
+
+@{
+    ViewBag.Title = "formView";
+}
+
+<h2>New Customer</h2>
+
+@using (Html.BeginForm("create", "Customer"))//this function automatically creates a  disposable object form
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.name)
+        @Html.TextBoxFor(m => m.name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.dateOfBirth)
+        @Html.TextBoxFor(m => m.dateOfBirth, new { @class = "form-control", type = "Date" })
+    </div>
+    <div class="checkbox">
+       <label> 
+        @Html.CheckBoxFor(m => m.isSubsribedToNewsletter) Subscribed To NewsLetter? 
+       </label>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

@@ -21,6 +21,8 @@ namespace vidly.Controllers
             _context.Dispose();
         }
         // GET: Customer/display
+       
+            
         public ActionResult display()
         {
             var customers = _context.Customers.Include(c=>c.membershipType).ToList();
@@ -35,5 +37,10 @@ namespace vidly.Controllers
 
             return View(customer);
         }
-    }
+        public ActionResult formView()
+        {
+            return View();
+
+        }
+   }
 }
