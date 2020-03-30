@@ -25,56 +25,54 @@ namespace vidly.Controllers
         // GET: Movies/Random
         public ActionResult Random()
         {
-            var movies = _context.Movies.Include(c=>c.genre).ToList();
-           
-           
-         
-            //ViewData["Movie"] = movie;
-            //ViewBag.Movie = movie;
+            var movies = _context.Movies.Include(c => c.genre).ToList();
             return View(movies);
-           // return Content("deepanshu balani is Gr8");
-            //return HttpNotFound();
-            //return new EmptyResult();
-            // return RedirectToAction("Index", "Home",new {page=1,sortBy="name"});
+          
         }
-        public ActionResult Details(int id)
+        public ActionResult formMovieView()
         {
-            var movie = _context.Movies.Include(c=>c.genre).SingleOrDefault(c => c.id == id);
+            var genres = _context.genres.ToList();
+            var viewModels = new NewMovieViewModel
+            {
+                Genres = genres
+            };
+            return View("formMovieView", viewModels);
+        }
+        [HttpPost]
+        public ActionResult save(Movie movie)
+        {
+
+            if (movie.id != 0)
+            {
+
+                var movieInDb = _context.Movies.Single(c => c.id == movie.id);
+                movieInDb.name = movie.name;
+                movieInDb.releaseDate = movie.releaseDate;
+                movieInDb.dateAdded = movie.dateAdded;
+                movieInDb.genre_Id = movie.genre_Id;
+            }
+            else
+            {
+
+                _context.Movies.Add(movie);
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Random", "Movies");
+        }
+        public ActionResult edit(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(c => c.id == id);
 
             if (movie == null)
                 return HttpNotFound();
-
-            return View(movie);
+            var viewModel = new NewMovieViewModel
+            {
+                Movie = movie,
+                Genres=_context.genres
+              
+            };
+            return View("formMovieView", viewModel);
         }
-
-        private ViewResult NewMethod()
-        {
-            return View();
-        }
-
-        //PUT:Movies/Edit/:id
-        public ActionResult Edit(int id)
-        {
-            return Content("id="+ id);
-        }
-        //pagination and sorting(pageIndex and sortBy are optional parameters)
-        //:GET:Movies
-       
-        public ActionResult Index(int?pageIndex,string sortBy)
-        {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-            if (string.IsNullOrWhiteSpace(sortBy))
-                sortBy = "name";
-            return Content(string.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
-        }
-        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,15)}")]
-        public ActionResult ByReleaseDate(int year,int month)
-        {
-            return Content(year + "/" + month);
-        }
-      
-
 
     }
 }

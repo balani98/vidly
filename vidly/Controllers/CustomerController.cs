@@ -59,6 +59,7 @@ namespace vidly.Controllers
         {
             Console.WriteLine(customer.Id);
             if (customer.Id!=0) {
+               
                 var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
                 customerInDb.name = customer.name;
                 customerInDb.dateOfBirth = customer.dateOfBirth;

@@ -11,6 +11,6 @@ namespace vidly.Models
         public int Id{get; set;}
         [Required]
         [StringLength(255)]
-        public String GenreName{get; set;}
+        public string GenreName{get; set;}
     }
 }

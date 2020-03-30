@@ -203,67 +203,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003271753264_InitialModel.cs" />
-    <Compile Include="Migrations\202003271753264_InitialModel.designer.cs">
-      <DependentUpon>202003271753264_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003280534149_addIsSubscribedToCustomer.cs" />
-    <Compile Include="Migrations\202003280534149_addIsSubscribedToCustomer.designer.cs">
-      <DependentUpon>202003280534149_addIsSubscribedToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003280550462_addMembershipType.cs" />
-    <Compile Include="Migrations\202003280550462_addMembershipType.designer.cs">
-      <DependentUpon>202003280550462_addMembershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003280754105_PopulateMembershipTypes.cs" />
-    <Compile Include="Migrations\202003280754105_PopulateMembershipTypes.designer.cs">
-      <DependentUpon>202003280754105_PopulateMembershipTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003280838391_applyAnnotationToCustomerName.cs" />
-    <Compile Include="Migrations\202003280838391_applyAnnotationToCustomerName.designer.cs">
-      <DependentUpon>202003280838391_applyAnnotationToCustomerName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003281539005_membershipTypeNameAdded.cs" />
-    <Compile Include="Migrations\202003281539005_membershipTypeNameAdded.designer.cs">
-      <DependentUpon>202003281539005_membershipTypeNameAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003281543087_updateMemberShipType.cs" />
-    <Compile Include="Migrations\202003281543087_updateMemberShipType.designer.cs">
-      <DependentUpon>202003281543087_updateMemberShipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003281612153_stringChanged.cs" />
-    <Compile Include="Migrations\202003281612153_stringChanged.designer.cs">
-      <DependentUpon>202003281612153_stringChanged.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003281616548_wantToYpdateValue.cs" />
-    <Compile Include="Migrations\202003281616548_wantToYpdateValue.designer.cs">
-      <DependentUpon>202003281616548_wantToYpdateValue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\.cs" />
-    <Compile Include="Migrations\.designer.cs">
-      <DependentUpon>.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003290608049_dobColumnDeleted.cs" />
-    <Compile Include="Migrations\202003290608049_dobColumnDeleted.designer.cs">
-      <DependentUpon>202003290608049_dobColumnDeleted.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003290610033_DateOfBirthAdded.cs" />
-    <Compile Include="Migrations\202003290610033_DateOfBirthAdded.designer.cs">
-      <DependentUpon>202003290610033_DateOfBirthAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003290708259_adddedNewColumnsInMovie.cs" />
-    <Compile Include="Migrations\202003290708259_adddedNewColumnsInMovie.designer.cs">
-      <DependentUpon>202003290708259_adddedNewColumnsInMovie.cs</DependentUpon>
+    <Compile Include="Migrations\202003301337329_MembershipTypeDataUpdated.cs" />
+    <Compile Include="Migrations\202003301337329_MembershipTypeDataUpdated.designer.cs">
+      <DependentUpon>202003301337329_MembershipTypeDataUpdated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModel.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieDbContext.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\NewCustomerViewModel.cs" />
+    <Compile Include="ViewModels\NewMovieViewModel.cs" />
     <Compile Include="ViewModels\RandomCustomerViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieView Model.cs" />
   </ItemGroup>
@@ -310,9 +263,7 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customer\formView.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Content Include="Views\Movies\formMovieView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -328,44 +279,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003271753264_InitialModel.resx">
-      <DependentUpon>202003271753264_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003280534149_addIsSubscribedToCustomer.resx">
-      <DependentUpon>202003280534149_addIsSubscribedToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003280550462_addMembershipType.resx">
-      <DependentUpon>202003280550462_addMembershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003280754105_PopulateMembershipTypes.resx">
-      <DependentUpon>202003280754105_PopulateMembershipTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003280838391_applyAnnotationToCustomerName.resx">
-      <DependentUpon>202003280838391_applyAnnotationToCustomerName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003281539005_membershipTypeNameAdded.resx">
-      <DependentUpon>202003281539005_membershipTypeNameAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003281543087_updateMemberShipType.resx">
-      <DependentUpon>202003281543087_updateMemberShipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003281612153_stringChanged.resx">
-      <DependentUpon>202003281612153_stringChanged.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003281616548_wantToYpdateValue.resx">
-      <DependentUpon>202003281616548_wantToYpdateValue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\.resx">
-      <DependentUpon>.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003290608049_dobColumnDeleted.resx">
-      <DependentUpon>202003290608049_dobColumnDeleted.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003290610033_DateOfBirthAdded.resx">
-      <DependentUpon>202003290610033_DateOfBirthAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003290708259_adddedNewColumnsInMovie.resx">
-      <DependentUpon>202003290708259_adddedNewColumnsInMovie.cs</DependentUpon>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003301337329_MembershipTypeDataUpdated.resx">
+      <DependentUpon>202003301337329_MembershipTypeDataUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

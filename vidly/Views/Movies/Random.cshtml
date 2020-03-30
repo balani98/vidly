@@ -1,10 +1,13 @@
 ﻿@model IEnumerable<vidly.Models.Movie>
 @{
     ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 <h2>Movies</h2>
+<input type="button" value="Create New Movie" class="btn btn-primary"
+       onclick="location.href='@Url.Action("formMovieView", "Movies")'" />
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -13,10 +16,11 @@
         </tr>
     </thead>
     <tbody>
+       
         @foreach (var movie in Model)
         {
             <tr>
-                <td>@Html.ActionLink(@movie.name.ToString(),"Details","Movies",new {id=movie.id },null)</td>
+                <td>@Html.ActionLink(@movie.name.ToString(), "edit", "Movies", new { id = movie.id }, null)</td>
                 <td>@movie.genre.GenreName</td>
             </tr>
         }
