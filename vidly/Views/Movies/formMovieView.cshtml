@@ -20,18 +20,23 @@
     <div class="form-group">
         <label for="name">Name</label>
         @Html.TextBoxFor(m => m.Movie.name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.name)
     </div>
     <div class="form-group">
         <label for="releaseDate">Released Date</label>
         @Html.TextBoxFor(m => m.Movie.releaseDate, "{0:dd-mm-yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.releaseDate)
     </div>
+    
     <div class="form-group">
         <label for="dateAdded">Movie added on</label>
         @Html.TextBoxFor(m => m.Movie.dateAdded, "{0:dd-mm-yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.dateAdded)
     </div>
     <div class="form-group">
         <label for="StockNo">Stocks in no.</label>
         @Html.TextBoxFor(m => m.Movie.StockNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.StockNo )
     </div>
 
 
@@ -41,6 +46,7 @@
         @Html.DropDownListFor(m => m.Movie.genre_Id,
          new SelectList(@Model.Genres,"Id","GenreName"),
          "Select Genre", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.genre_Id)
     </div>
 
     <button type="Submit" class="btn btn-primary">Save</button>

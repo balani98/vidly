@@ -207,6 +207,10 @@
     <Compile Include="Migrations\202003301337329_MembershipTypeDataUpdated.designer.cs">
       <DependentUpon>202003301337329_MembershipTypeDataUpdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003301844334_DataAnnotationsApplied.cs" />
+    <Compile Include="Migrations\202003301844334_DataAnnotationsApplied.designer.cs">
+      <DependentUpon>202003301844334_DataAnnotationsApplied.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModel.cs" />
@@ -284,6 +288,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003301337329_MembershipTypeDataUpdated.resx">
       <DependentUpon>202003301337329_MembershipTypeDataUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003301844334_DataAnnotationsApplied.resx">
+      <DependentUpon>202003301844334_DataAnnotationsApplied.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -55,21 +55,34 @@ namespace vidly.Controllers
             return View("formView",viewModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult save(Customer customer)
         {
-            Console.WriteLine(customer.Id);
-            if (customer.Id!=0) {
+           
+
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new NewCustomerViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.membershipTypes.ToList()
+                };
+                return View("formView", viewModel);
+             }
+        
+            if (customer.Id==0) {
+
+                _context.Customers.Add(customer);
+            }
+            else
+            {
                
+                
                 var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
                 customerInDb.name = customer.name;
                 customerInDb.dateOfBirth = customer.dateOfBirth;
                 customerInDb.membershipTypeId = customer.membershipTypeId;
                 customerInDb.isSubsribedToNewsletter = customer.isSubsribedToNewsletter;
-            }
-            else
-            {
-               
-                _context.Customers.Add(customer);
             }
                 _context.SaveChanges();
             return RedirectToAction("display", "Customer");
