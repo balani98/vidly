@@ -215,6 +215,7 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModel.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsAge.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieDbContext.cs" />
     <Compile Include="Models\Customer.cs" />

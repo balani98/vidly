@@ -58,8 +58,6 @@ namespace vidly.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult save(Customer customer)
         {
-           
-
             if (!ModelState.IsValid)
             {
                 var viewModel = new NewCustomerViewModel
@@ -68,8 +66,10 @@ namespace vidly.Controllers
                     MembershipTypes = _context.membershipTypes.ToList()
                 };
                 return View("formView", viewModel);
-             }
-        
+            }
+
+
+
             if (customer.Id==0) {
 
                 _context.Customers.Add(customer);
