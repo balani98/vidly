@@ -20,7 +20,7 @@
     </div>
     <div class="form-group">
         <label for="dateOfBirth">Date of Birth</label>
-        @Html.TextBoxFor(m => m.Customer.dateOfBirth, "{0:dd mmm yyyy}", new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Customer.dateOfBirth, "{0:d MMM yyyy}", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Customer.dateOfBirth)
     </div>
 
