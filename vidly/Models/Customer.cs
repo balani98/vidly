@@ -23,6 +23,8 @@ namespace vidly.Models
         public byte membershipTypeId { get; set; }
        [Min18YearsAge]
         public DateTime?  dateOfBirth { get; set; }
+        public static readonly byte unknown = 0;
+        public static readonly byte payAsYouGo = 1;
 
     }
 }

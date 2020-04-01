@@ -11,10 +11,10 @@ namespace vidly.Models
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var customer = (Customer)validationContext.ObjectInstance;
-            if (customer.dateOfBirth == null&&customer.membershipTypeId!=0)
+            if (customer.dateOfBirth == null&&customer.membershipTypeId!=Customer.unknown)
                 return new ValidationResult("Date of Birth is required");
 
-            if (customer.membershipTypeId == 1||customer.membershipTypeId == 0)
+            if (customer.membershipTypeId == Customer.payAsYouGo||customer.membershipTypeId == Customer.unknown)
                   return ValidationResult.Success;
              
             var age = DateTime.Today.Year - customer.dateOfBirth.Value.Year;
