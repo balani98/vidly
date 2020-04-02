@@ -33,7 +33,7 @@ namespace vidly.Controllers
         {
             var genres = _context.genres.ToList();
             var viewModels = new NewMovieViewModel
-            {
+            { Movie =new Movie(),
                 Genres = genres
             };
             return View("formMovieView", viewModels);
@@ -59,7 +59,8 @@ namespace vidly.Controllers
                 movieInDb.releaseDate = movie.releaseDate;
                 movieInDb.dateAdded = movie.dateAdded;
                 movieInDb.genre_Id = movie.genre_Id;
-            }
+                
+               }
             else
             {
 
