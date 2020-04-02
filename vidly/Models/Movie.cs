@@ -21,6 +21,7 @@ namespace vidly.Models
     
         public DateTime releaseDate { get; set; }
         public DateTime dateAdded { get; set; }
+        [Range(1,10)]
         public int StockNo { get; set; }
     }
 }

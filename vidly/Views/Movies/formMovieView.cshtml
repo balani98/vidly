@@ -12,7 +12,7 @@
 @using (Html.BeginForm("save", "Movies"))//this function automatically creates a  dBisposable object form
 {
 
-    
+
 
     <div class="form-group">
         <label for="name">Name</label>
@@ -25,11 +25,8 @@
         @Html.ValidationMessageFor(m => m.Movie.releaseDate)
     </div>
 
-    <div class="form-group">
-        <label for="dateAdded">Movie added on</label>
-        @Html.TextBoxFor(m => m.Movie.dateAdded, "{0:d-MMM-yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Movie.dateAdded)
-    </div>
+
+
     <div class="form-group">
         <label for="StockNo">Stocks in no.</label>
         @Html.TextBoxFor(m => m.Movie.StockNo, new { @class = "form-control" })
@@ -45,6 +42,7 @@
          "Select Genre", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Movie.genre_Id)
     </div>
+    @Html.HiddenFor(m => m.Movie.dateAdded, new { @Value = DateTime.Now.ToShortDateString() })
     @Html.HiddenFor(m => m.Movie.id);
     <button type="Submit" class="btn btn-primary">Save</button>
 }
