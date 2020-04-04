@@ -39,17 +39,17 @@ namespace vidly.Controllers.Api
         }
         //POST api/customers
         [HttpPost]
-        public CustomerDto createCustomer(CustomerDto customerDto)
+        public IHttpActionResult createCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             Mapper.Initialize(cfg => cfg.CreateMap<CustomerDto,Customer>());
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
             _context.Customers.Add(customer);
             _context.SaveChanges();
             customerDto.Id = customer.Id;
 
-            return customerDto;
+            return Created(new Uri(Request.RequestUri+"/"+customer.Id),customerDto);
 
         }
         //PUT api/customers/1
