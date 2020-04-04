@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using vidly.Dto;
 using vidly.Models;
 
 namespace vidly.Controllers.Api
@@ -19,7 +21,9 @@ namespace vidly.Controllers.Api
         //GET:/api/movies
         public IHttpActionResult getMovies()
         {
-            var movies = _context.Movies.ToList();
+            Mapper.Initialize(cfg => cfg.CreateMap<Movie, MovieDto>());
+            var movies = _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+        
             if (movies == null)
                 return NotFound();
             return Ok(movies);
@@ -27,18 +31,21 @@ namespace vidly.Controllers.Api
         //GET:/api/movies/1
         public IHttpActionResult getMovie(int id)
         {
+            Mapper.Initialize(cfg => cfg.CreateMap<Movie, MovieDto>());
             var movie = _context.Movies.SingleOrDefault(c => c.id == id);
             if (movie == null)
                 return NotFound();
-            return Ok(movie);
+            return Ok(Mapper.Map<Movie,MovieDto>(movie));
 
         }
         //POST:/api/movies
         [HttpPost]
-        public IHttpActionResult createMovie(Movie movie)
+        public IHttpActionResult createMovie(MovieDto movieDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
+            Mapper.Initialize(cfg => cfg.CreateMap<MovieDto, Movie>());
+            var movie = Mapper.Map<MovieDto,Movie>(movieDto);
 
             _context.Movies.Add(movie);
             _context.SaveChanges();
@@ -46,20 +53,22 @@ namespace vidly.Controllers.Api
          }
 
         [HttpPut]
-        public IHttpActionResult updateMovie(Movie movie,int id)
+        public IHttpActionResult updateMovie(MovieDto movieDto,int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Invalid Request");
             
+           
+           
             var movieinDb = _context.Movies.SingleOrDefault(c => c.id == id);
             if (movieinDb == null)
                 return NotFound();
-            movieinDb.name = movie.name;
-            movieinDb.dateAdded = DateTime.Now;
-            movieinDb.genre_Id = movie.genre_Id;
-            movieinDb.releaseDate = movie.releaseDate;
+            //movieDto.id = id;
+            Mapper.Initialize(cfg => cfg.CreateMap<MovieDto, Movie>().ForMember(m => m.id, opt => opt.Ignore()));
+            Mapper.Map(movieDto, movieinDb);
+           
             _context.SaveChanges();
-            return Ok(movie);
+            return Ok("Movie updated");
         }
         public IHttpActionResult deleteMovie(int id)
         {
