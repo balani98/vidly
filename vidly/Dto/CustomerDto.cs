@@ -17,7 +17,7 @@ namespace vidly.Dto
         public bool isSubsribedToNewsletter { get; set; }
       
         public byte membershipTypeId { get; set; }
-        
+        public MembershipTypeDto membershipType { get; set; }
         public DateTime? dateOfBirth { get; set; }
         public static readonly byte unknown = 0;
         public static readonly byte payAsYouGo = 1;

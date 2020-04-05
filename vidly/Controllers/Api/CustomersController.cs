@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using vidly.Dto;
 using vidly.Models;
+using System.Data.Entity;
 
 namespace vidly.Controllers.Api
 {
@@ -21,8 +22,11 @@ namespace vidly.Controllers.Api
         //GET /api/customers
         public IEnumerable<CustomerDto> getCustomers()
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<Customer, CustomerDto>());
-            return _context.Customers.ToList().Select(Mapper.Map<Customer,CustomerDto>);
+           
+            var customerDtos= _context.Customers.Include(m => m.membershipType).
+                                      ToList().
+                                      Select(Mapper.Map<Customer,CustomerDto>);
+            return customerDtos;
         }
         //GET /api/customers/1
         public IHttpActionResult getcustomer(int id)
@@ -43,7 +47,7 @@ namespace vidly.Controllers.Api
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-            Mapper.Initialize(cfg => cfg.CreateMap<CustomerDto,Customer>());
+          
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
             _context.Customers.Add(customer);
             _context.SaveChanges();
@@ -62,7 +66,7 @@ namespace vidly.Controllers.Api
 
             if (customerinDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            Mapper.Initialize(cfg => cfg.CreateMap<CustomerDto, Customer>());
+          
             customerDto.Id = id;
             Mapper.Map(customerDto,customerinDb);
           
