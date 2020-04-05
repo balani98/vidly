@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Customers</h2>
-<input type="button" value="Create New Customer"class="btn btn-primary" onclick="location.href='@Url.Action("formView", "Customer")'" />
+<input type="button" value="Create New Customer" class="btn btn-primary" onclick="location.href='@Url.Action("formView", "Customer")'" />
 
 @if (!Model.Any())
 {
@@ -13,12 +13,13 @@
 }
 else
 {
-    <table class="table table-bordered table-hover">
+    <table id="customers" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Customer</th>
                 <th>Discount Rate</th>
                 <th>Membership Type</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -28,8 +29,32 @@ else
                     <td>@Html.ActionLink(customer.name.ToString(), "edit", "Customer", new { id = customer.Id }, null)</td>
                     <td>@customer.membershipType.discountRate</td>
                     <td>@customer.membershipType.membershipTypeName</td>
+                    <td><button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button></td>
                 </tr>
             }
         </tbody>
     </table>
+
+
 }
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#customers .js-delete").on("click", function () {
+                var button = $(this);
+                if (confirm("Are you sure want to delete")) {
+                    $.ajax({
+                        url: "/api/customers/" + $(this).attr("data-Customer-id"),
+                        method: "DELETE",
+                        success: function () {
+                            button.parents("tr").remove();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+}s
