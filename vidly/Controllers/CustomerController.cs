@@ -27,8 +27,8 @@ namespace vidly.Controllers
             
         public ActionResult display()
         {
-            var customers = _context.Customers.Include(c=>c.membershipType).ToList();
-            return View(customers);
+           // var customers = _context.Customers.Include(c=>c.membershipType).ToList();
+            return View();
         }
         public ActionResult formView()
         {
