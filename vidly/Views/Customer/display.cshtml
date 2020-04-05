@@ -40,6 +40,7 @@ else
 @section scripts{
     <script>
         $(document).ready(function () {
+            $("#customers").dataTable();
             $("#customers").on("click",".js-delete", function () {
                 var button = $(this);
                 bootbox.confirm("Are you sure want to delete", function (result) {
